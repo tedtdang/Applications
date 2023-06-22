@@ -1,0 +1,422 @@
+Q1. You need to chain together three different algorithms for a model you are creating. You need to run PCA, RCF, and LDA in succession. What is the recommended way to do this?
+- Use Lambda Step Functions to link together the separate training jobs.
+- Use AWS Batch to create a script that will trigger each algorithm in sequence.
+- You cannot run SageMaker built-in algorithms together. You will need to create individual training jobs and manually execute them via SDK or Console.
+x Use an Inference Pipeline to link together these algorithms.
+
+Q2. You have been asked to build an automated chatbot for customer service. If the initial interaction with the customer seems negative or the customer is upset or unhappy, you want to immediately transfer that chat session over to a live human. What is the simplest way to implement this feature?
+- Use XGBoost to create a binary classification model to decide if a customer's initial comments are negative or positive. If negative, redirect the chat session over to a live customer support person.
+x Use Amazon Lex to take in the customer's initial comments, then process them through Amazon Comprehend to determine sentiment. If sentiment is negative, hand the chat session over to a live customer support person.
+- Use IPInsights to identify the customer by their IP address. If they have had a recent bad experience as logged in the CRM system, direct them to a live customer support person.
+- Use Amazon Comprehend to take in the customer's initial comments, then process them through Amazon Personalize to determine sentiment. If sentiment is negative, hand the chat session over to a live customer support person.
+- Use LDA to create an NLP model that can understand the sentiment of the customer's comments. Create a Lambda function to redirect the chat session over to a live customer support person.
+
+Q3. Your company has just discovered a security breach occurred in a division separate from yours but has ordered a full review of all access logs. You have been asked to provide the last 180 days of access to the three SageMaker Hosted Service models that you manage. When you set up these deployments, you left everything default. How will you be able to respond?
+x Use CloudTrail to pull a list of all access to the models for the last 90 days. Any data beyond 90 days is unavailable.
+- Use CloudWatch to pull a list of all access records for the ML models. Make use of a Python library to parse out only the access records.
+- Use CloudTrail to pull a list of all access to the ML models for the last 180 days.
+- Use SageMaker Detailed Logging to produce a CSV file of access from the past 180 days.
+- Use CloudWatch along with IPInsights to analyse the logs for suspicious activity from the past 180 days then download these records.
+
+Q4. To make use of your published model in a custom application, what must you do?
+- Use the CloudTrail API to monitor for inference requests and trigger the SageMaker model endpoint.
+- Create an entry in Route 53 to point your desired DNS name to the endpoint.
+- Instruct SageMaker to generate a unique endpoint URL for your application.
+x Use the SageMaker API InvokeEndpoint() method via SDK.
+- Use a Lambda function to perform the inferences for your application.
+
+Q5. You work for a market research company looking for ways to increase the efficiency of data collection. Presently, they pay students to watch groups of people as they watch commercials. The students record what percentage of the group smiles or laughs during certain moments in the commercial. Which of the following services could you use to improve this process?
+- Semantic Segmentation
+- Object Detection
+- XGBoost
+x Rekognition Video
+- Comprehend
+
+Q6. You are applying text transformation on corpus data before using it in Amazon SageMaker BlazingText algorithm. The corpus data consists of 3 attributes (label index, title, and abstract) with the labeled index mapping to either Film, Music, or Art. What does the BlazingText algorithm expect as training data when applying supervised training with File Mode?
+- Multiple text files with space-separated tokens where each file should contain a training sentence per line along with the labels. Labels are words that are prefixed by the string label.
+- A single preprocessed text file with tokenized vectors for the word frequencies for the title and abstract attributes per line. Each line should also have the one-hot encoded labeled indexes.
+- Create a manifest file that should be in JSON Lines format in which each line represents one sample. The sentences are specified using the label and source tag. The source tag will present the title and abstract. The label tag will represent the labeled index.
+x A single preprocessed text file with space-separated tokens where the training file should contain a training sentence per line along with the labels. Labels are words that are prefixed by the string label.
+
+Q7. How can a Juypter Notebook instance read data from an S3 bucket encrypted with SSE-KMS?
+x Ensure the Notebook instance role is associated with the KMS key.
+- Encrypted data in S3 cannot be accessed through Notebook instances.
+- Ensure the Notebook instance role is an administrator who can administer the KMS key.
+- Use a VPC Gateway Endpoint.
+- Import an external key into KMS and use it to securely read the data.
+
+Q8. You have been working on a machine learning model for several iterations and feel that it is ready for production and allow real users to begin making inferences to it. You want to ensure that the models are ran on multiple instances in different availability zones. What steps can you take to ensure this occurs?
+- Use Amazon SageMaker hosting services, deploy two different variants of the model routing 50% of the traffic to one availability zone and the other 50% to the other availability zone
+- Use Amazon SageMaker hosting services, specify two or more instances and specify multiple availability zones you want to launch models in
+x Use Amazon SageMaker hosting services and specify two or more instances. Amazon SageMaker launches them in multiple availability zones automatically
+- Use Amazon SageMaker hosting services and specify a single instance. Use Route53 with failover routing policy to ensure users are routed to different availability zone if the instance becomes unreachable
+
+Q9. You are consulting with a large educational organization on a ML model using the built-in BlazingText SageMaker algorithm. They have asked for help deciding which metric to use in an automatic model tuning job. What can you recommend to help them get started?
+- Metrics with a prefix of train: are the ones to always use for optimization jobs.
+x The metrics to use for optimization can vary depending on how you are using the algorithm.
+- The proper metric for BlazingText optimization is validation:accuracy.
+- BlazingText is not supported with hyperparameter tuning.
+- Metrics with a prefix of validation: are the ones to always use for optimization jobs.
+
+Q10. A machine learning specialist is running a training job on a single EC2 instance using their own Tensorflow code on a Deep Learning AMI. The specialist wants to run distributed training and inference using SageMaker. What should the machine learning specialist do?
+- Ensure both the SageMaker Notebook instance and EC2 instance have the same role assigned to them. Use Notebook peering to gain access to run scripts from SageMaker on the EC2 instance
+x Use Tensorflow in SageMaker and edit your code to run using the SageMaker Python SDK
+- Use Tensorflow in SageMaker and run your code as a script
+- It is not possible to run custom Tensorflow code in SageMaker
+- Use Tensorflow in SageMaker and modify the AWS Deep Learning Docker containers
+
+Q11. Which of the following is NOT a valid use-case for incremental training?
+x Rebuilt model artifacts which you have accidentally deleted.
+- Train a new model using an expanded dataset that contains an underlying pattern that was not accounted for in the previous training and which resulted in poor model performance.
+- Train several variants of a model, either with different hyperparameter settings or using different datasets.
+- Use the model artifacts or a portion of the model artifacts from a popular publicly available model in a training job. You don't need to train a new model from scratch.
+- Resume a training job that was stopped.
+- Train several variants of a model, either with different hyperparameter settings or using different datasets.
+
+Q12. You need to extract keywords from a collection of news stories. Which of the following algorithms could you use for this?
+x NTM
+- PCA
+- RCF
+- WWF
+x LDA
+
+Q13. Which of the following could be used in an API to determine if a used car's price is within market value or not?
+- Multi-class Classification
+- Historic Forecasting
+- One-Hot Encoding
+- Linear Regression
+x Logistic Regression
+x Binary Classification
+- Polynomial Synthesis
+
+Q14. A financial institution is seeking a way to improve security by implementing two-factor authentication (2FA). However, management is concerned about customer satisfaction by being forced to authenticate via 2FA for every login. The company is seeking your advice. What is your recommendation?
+- Create a binary classifier model using Object2Vec to detect unusual activity for customer logins. If unusual activity is detected, trigger an SNS notification to the Fraud Department.
+- Recommend that the company invests in customer education on why 2FA is important to their well-being. Train customer support staff on properly handling customer complaints.
+x Create a ML model that uses IP Insights to detect anomalies in client activity. Only if anomalies are detected, force a 2FA step.
+- Recommend that the company create a custom login page for their website where customers can login by simply enabling their webcam. Use Amazon Rekognition to detect whether the face is of the customer and authenticate them into their account.
+- Create an ML model using Linear Learner that can evaluate whether a customer is truly a human or some scripted bot typical of hacking attempts. Hold off on implementing 2FA until there is sufficient data to support its need.
+
+Q15. You are consulting for a restaurant chain that is expanding into new metropolitan areas. Your task is to help them decide where to place the restaurants based on proximity to competitor restaurants. They want to locate their stores within 1km of a competitor's restaurant. What algorithm might you choose to help with this?
+- Random Cut Forest
+- K-Nearest Neighbor
+- K-Means
+x You would not need machine learning for this project.
+- IP Insights
+
+Q16. A binary classification model has been created to sort parts on an assembly line into acceptable or unacceptable, based on a complex array of readings. The model incorrectly decides that some flawed parts are acceptable when they should have been marked as unacceptable. Which of the following correctly defines this type of result?
+- True Positive
+x Type II Error
+x False Negative
+- Type I Error
+- True Negative
+- False Positive
+
+Q17. You are preparing a large set of CSV data for a training job using K-Means. Which of the following are NOT actions that you should expect to take in this scenario?
+- Decide on the value you want to assign to k.
+x Use a mean or median strategy to populate any missing label data.
+- Convert the data to protobuf RecordIO format.
+- Decide on the number of clusters you want to target.
+- Ensure that your IAM role has the iam:PassRole action.
+
+Q18. You are working with several scikit-learn libraries to preprocess and prepare your data. You also have created a script that trains your model using scikit-learn. You have been tasked with using SageMaker to train your model using this custom code. What can be done to run scikit-learn jobs directly in Amazon SageMaker?
+- Upload your training script to Amazon S3. Use a Notebook instance in Amazon SageMaker to run the code from whatever instance type you need.
+- Include your training script within a Notebook instance on Amazon SageMaker. Install scikit-learn inside a Docker container that run your script. Upload container to ECR and use within Amazon SageMaker notebook instance.
+x Include your training script within a Notebook instance on Amazon SageMaker. Construct a sagemaker.sklearn.estimator.sklearn estimator. Train the model using the pre-build container provided by the Estimator.
+- Upload your training script to a Deep Learning AMI with scikit-learn pre-installed. Use Deep Learning AMI to train your model.
+
+Q19. During the data analysis portion of your machine learning process you have several hundred compressed JSON files stored in Amazon S3 around 200 MB in size. These files are categorised as semi-structured data and have already been crawled by AWS Glue to determine the schema associated with it. You have been using Amazon Athena to query your Amazon S3 data but finding it extremely expensive scanning 10 or more GBs of data each query. What are some techniques you can perform to cut down query execution costs?
+- Break files into smaller files
+x Partition your data
+- Convert files to CSV
+x Only include columns in the queries being run that you need
+x Convert files to Apache Parquet or Apache ORC
+
+Q20. You are working with a dataset with many categorical features to use with the Amazon XGBoost built-in algorithm. You've been instructed the dataset is random, so you decide not to randomize the dataset. Next, you apply one hot encoding on the categorical features and split the dataset into training (80%) and testing datasets (20%) before using the training dataset to train your machine learning model. What challenge might you face with this approach?
+- All categorical features must be normalized before applying one hot encoding techniques with the Amazon XGBoost built-in algorithm.
+- One hot encoding techniques are not valid input types for categorical features for the Amazon XGBoost built-in algorithm.
+- Since randomization was assumed, other techniques like orthogonal sparse bigram (OSB) must be applied along with one hot encoding techniques.
+x Since randomization was assumed, some categories of categorical variables may not be present in the test dataset.
+x Since randomization was assumed, frequency distribution of categories may be different in training dataset as compared to the testing dataset.
+
+Q21. You have recently started a training job for a machine learning model in an Amazon SageMaker Jupyter notebook. What is the easiest way to visualize memory utilization, CPU, and training metrics?
+- Push CloudWatch logs to S3 and use QuickSight to visualize the metrics
+- Use CloudWatch logs and Kafka
+- Stream Kinesis Delivery Stream to stream instance and training metrics to S3. Use QuickSight to visualize the metrics.
+x Setup CloudWatch dashboard
+
+Q22. What needs to be done to the following phrase before using it in your machine learning process? The quk BROWN FOX jumped over the lazy dog.
+- Replace each word with a respective tf-idf vector
+- Fix the "quk" to "quick"
+x Create tokens from each value
+x Lowercase transformation
+x Apply mapping of stop words
+- One-hot encode values
+- Replace each word with a respective n-gram vector
+
+Q23. You are preparing plain text corpus data to build a model for Amazon's Neural Topic Model (NTM) algorithm. What are the steps you need to take before the data is ready for training?
+- First create bigrams of the corpus data. Then, count the occurrence of each bigram produced, creating word count vectors. Use these vectors as training data.
+x First tokenize the corpus data. Then, count the occurrence of each token and form bag-of-words vectors. Use these vectors as training data.
+- First perform tf-idf to remove words that are not important. Use the number of unique n-grams to create vectors and respective word counts. Use these vectors as training data.
+- First normalize the corpus data. Then, count the occurrence of each of the value produced, creating word count vectors. Use these vectors as training data.
+
+Q24. You have been tasked with determining whether a given dataset has anomalous data associated with it. Which algorithm is a good fit and how can you ensure incorrectly detected anomalies are minimized?
+- Principal Component Analysis (PCA) algorithm and increase the mini_batch_size hyperparameter
+x Random Cut Forest (RCF) algorithm and increase/decrease the num_trees hyperparameter
+- Use QuickSight and the ML-Powered Anomaly Detection built-in feature
+x Random Cut Forest (RCF) algorithm and increase/decrease the num_samples_per_tree hyperparameter
+- Principal Component Analysis (PCA) algorithm and decrease the mini_batch_size hyperparameter
+
+Q25. You have been tasked with creating a labeled dataset by classifying text data into different categories depending on the summary of the corpus. You plan to use this data with a particular machine learning algorithm within AWS. Your goal is to make this as streamlined as possible with minimal amount of setup from you and your team. What tool can be used to help label your dataset with the minimum amount of setup?
+- Marketplace AMI for NLP problems
+x AWS SageMaker GroundTruth text classification job
+- Amazon Latent Dirichlet Allocation (LDA) algorithm
+- Amazon Neural Topic Modeling (NTM) built-in algorithm
+- AWS Comprehend sentiment analysis
+- AWS Comprehend entity detection
+
+Q26. You are a data scientist that has been tasked with setting up an Amazon Elastic Map Reduce (EMR) cluster to host your organization's data lake. You also need to setup this cluster for machine learning processes and it has been decided to use Amazon SageMaker libraries as the machine learning platform. What steps do you need to take to start using SageMaker with your EMR cluster data lake?
+- Use Apache Mahout within an EMR Notebook to train and infer your model
+- Ensure the EMR cluster and SageMaker hosted model are in the same region to make successful inferences
+x Run your SageMaker Spark application on EMR by submitting your Spark application jar and any additional dependencies your Spark application uses
+- Convert EMR DataFrame to CSV and use that to train and infer your model
+x Download the aws-sagemaker-spark-sdk component along with Spark on your EMR cluster
+
+Q27. You need to implement transformations for data that is hosted in Amazon S3 and an Amazon RDS MySQL instance. Which of the following needs to occur to achieve this?
+- You must create two separate transformation jobs. AWS Glue only processes one data store at a time.
+x Define an AWS Glue Job to transform the data that uses these Data Catalog tables as sources and targets
+- Define an Redshift cluster to COPY the data from S3 and RDS into Redshift tables
+x Ensure that the role you pass to the crawler has permission to access Amazon S3 paths.
+x Ensure that the JDBC connection the crawler uses has the correct username and password credentials to access the RDS instance
+- Define an EMR cluster using Apache Hive to create metadata tables and Apache Spark to transform the data.
+x Define an AWS Glue Crawler to populate the AWS Glue Data Catalog with tables.
+
+Q28. You have been tasked with transforming highly sensitive data using AWS Glue. Which of the following AWS Glue settings allowing you to control encryption for your transformation process?
+x Encryption of your Data Catalog at its components using symmetric keys
+- Encrypting the managed EBS volumes used to run Apache Spark environment running PySpark code
+- Encryption of the classifier used during the transformation job
+- Encryption of your Data Catalog at its components using asymmetric keys
+x The server-side encryption setting (SSE-S3 or SSE-KMS) that is passed as a parameter to your AWS Glue ETL job.
+x The security configurations that you create (S3 encryption, CloudWatch logs encryption, and Job bookmark encryption)
+
+Q29. You are a machine learning specialist evaluating a current model that has been deployed into production. It has been deployed for a few weeks now and the results are not accurate and sometimes the inference data is missing values. What are some techniques you can review to help solve this problem?
+x Ensure the training datasets are large, representative samples of the populations that the model needs to make predictions.
+- Ensure the inference data has placeholder values for any of the missing values
+- Ensure the inference data is in the exact same for as the training and testing data
+- Ensure the training data has a 50/50 distribution of the target attribute.
+x Ensure the target variable used as the predictor during training represents the actual outcome that the machine learning model is trying to predict.
+x Ensure the extraction methods used to generate the training datasets are the same as for the production inference data.
+
+Q30. You are a machine learning specialist building a model to determine the location (latitude and longitude) from different images taken and posted on a social media site. You've been provided with millions of images to use for training stored in Amazon S3. You've written a Java script to read the images from Amazon S3, extract pixels, latitude and longitude data into CSV format to train the model with. Which service is the best candidate to distribute the workload and create the training dataset?
+- Amazon Athena
+- AWS Glue
+- SageMaker GroundTruth
+x Amazon EMR
+
+Q31. You are currently working on a system that uses batch processes to stream application server log files into Amazon S3, which consist of a cron job running every 30 minutes. You have been tasked with streamlining this process to create a near real-time streaming of the application server logs into Amazon S3. Which architecture would help you solve this process with minimal setup?
+- Install the CloudWatch agent onto the application server to log the files into CloudWatch. Create a Lambda function that periodically checks the CloudWatch logs for new events. Trigger the Lambda function to store the CloudWatch logs into Amazon S3 if changes are detected.
+- Create a Python program that uses the Kinesis API to call the PutRecords API call. Specify the Kinesis Firehose delivery stream to stream the data to Amazon S3. Use the forever command to run the Python program on the application server log files.
+x Install the Amazon Kinesis agent on the application server. Configure it by specifying the log files to monitor and the Kinesis Firehose delivery stream to stream the data to Amazon S3.
+- Create a Python program that uses the Kinesis API to call the PutRecords API call. Specify the Kinesis Streams to ingest the data and the Kinesis Firehose delivery stream to stream the data to Amazon S3. Use the forever command to run the Python program on the application server log files.
+
+Q32. You are in charge of training a deep learning (DL) model at scale using massively large datasets. These datasets are too large to load into memory on your Notebook instances. What are some best practices to use to solve this problem and still have fast training times?
+x Pack the data in parallel, distributed across multiple machines and split the data into a small number of files with a uniform number of partitions.
+x Once the data is split into a small number of files and partitioned, the preparation job can be parallelized and thus run faster.
+- Use a fleet of RAM intensive ml.m5 EC2 instances with MapReduce and Hadoop installed onto them. Load the data in parallel to the cluster to distribute across multiple machines.
+- Once the data is loaded onto the instances, split the data into a small number of files and partitioned, then the preparation job can be parallelized and thus run faster.
+- Use a fleet of GPU intensive ml.p2 EC2 instances with MapReduce and Hadoop installed onto them. Load the data in parallel to the cluster to distribute across multiple machines.
+
+Q33. You are working for a hot new startup that calculates different metrics about their customers depending on how much money they spend on a weekly, quarterly, and yearly basis. These metrics are classified as elite, novice, and beginner. Depending on their ranking they get more/less discounts and placed in higher/lower priority for customer support. Your machine learning model should take this ordering into consideration. The algorithm you have chosen expects all numerical inputs. What can be done to handle these classification values?
+- Use one-hot encoding techniques to map values for each classification
+x Experiment with mapping different values for each status and see which works best
+- Use one-hot encoding techniques to map values for each classification dropping the original classification feature
+- Apply random numbers to each classification value and apply gradient descent until the values converge to expect results
+
+Q34. You are preparing a data repository to host the dataset needed to train a model using Amazon SageMaker's Semantic Segmentation algorithm. You have collected all the data locally on your machine and need to transfer it into your data repository. What must be done to accomplish this?
+- Host the dataset on an Provisioned IOPS EBS volume optimized to process IO for image data storing it in two channels. One for train and one for validation, in four directories, two for images and two for annotations. Use a label map that describes how the annotation mappings are established.
+- Host the dataset in Amazon S3, storing it in one train channel. Store the images in one directory and annotations in another directory. Use a label map that describes how the annotation mappings are established.
+- Host the dataset on a SageMaker Jupyter Notebook on a ml.c4.8xlarge instance, storing it in one train channel. Store the images in one directory and annotations in another directory. Use a label map that describes how the annotation mappings are established.
+- Host the dataset on a SageMaker Jupyter Notebook on a ml.p2.8xlarge instance, storing it in one train channel. Store the images in one directory and annotations in another directory. Use a label map that describes how the annotation mappings are established.
+x Host the dataset in Amazon S3 and storing it in two channels. One for train and one for validation, in four directories, two for images and two for annotations. Use a label map that describes how the annotation mappings are established.
+
+Q35. You are working for an online shopping platform that records actions made by its users. This information is captured in multiple JSON files stored in S3. You have been tasked with moving this data into Amazon Redshift database tables as part of a data lake migration process. Which of the following needs to occur to achieve this in the most efficient way?
+- Use multiple concurrent COPY commands to load the table from each JSON file.
+x Use COPY commands to load the tables from the data files on Amazon S3.
+- Setup DynamoDB table and use Data Pipeline to load the S3 data into DynamoDB table.
+- Use the INSERT command to load the tables from the data files on Amazon S3.
+x Troubleshoot load errors and modify your COPY commands to correct the errors.
+x Launch an Amazon Redshift cluster and create database tables.
+- Use COPY commands to load the tables from the data files on DynamoDB.
+
+Q36. You have been tasked with using Polly to translate text to speech in the company announcements that launch weekly. The problem you are encountering is how Polly is incorrectly translating the companies acronyms. What can be done for future tasks to help prevent this?
+x Create dictionary lexicon
+x Use SSML tags in documents
+- Use speech marks for input text documents
+- Use Amazon Comprehend to pull parts of speech and use to help pronounce acronyms
+- Use Amazon Transcribe to first map the acronyms to pronunciations then include them in the Amazon polly pipeline
+
+Q37. You have setup a group of SageMaker Notebook instances for your company's data scientists. You wanted to uphold your company's philosophy on least privilege and disabled Internet access for the notebooks. However, the data scientists report that they are unable to import certain key libraries from the Internet into their notebooks. What is the most efficient path?
+- Create a VPC Gateway Endpoint that bridges between the VPC and the desired Internet location of the required libraries.
+- Create a series of EC2 instances outside of the VPC and install Jupyter Notebook on those instances. Have the scientists use those instances instead of SageMaker.
+x Create a NAT gateway within the Notebook VPC and associated default route to the NAT gateway.
+- Advise the data scientists that it is not possible to import libraries from the internet given the company's least privilege philosophy.
+- Suggest that the scientists choose different libraries that are open source and do not pose a threat to company policy.
+
+Q38. You are designing an image classification model that will detect objects in provided pictures. Which neural network approach would be most likely in this use case?
+- Stochastic Neural Network
+- Object detection is not a good use-case for neural networks.
+- Decepticon Neural Network
+- Recurrent Neural Network
+x Convolutional Neural Network
+
+Q39. You are consulting with a large financial institution on a ML model using a built-in SageMaker algorithm. They have asked for help deciding which hyperparameters and ranges to use in an automatic model tuning job. What can you recommend to help them get started?
+- Use a Bayesian approach when choosing target parameters and recommended ranges.
+- Use a stochastic approach when choosing target parameters and recommended ranges.
+- Use a random approach when choosing parameters and recommended ranges.
+x Consult the documentation regarding the tunable parameters and recommended ranges.
+- All algorithm hyperparameters are available for auto-tuning but you must choose the proper target metric scale.
+
+Q40. When evaluating a model after the training and testing process, you notice that the error rate during training is high but the error rate during testing is low. Which of the following could be the reason for obtaining these error rates?
+- Your model is overfitting the training data.
+- You need to re-evaluate the section of your algorithm.
+x You have a data issue with both your training and testing datasets.
+- You should train for a longer period of time.
+x You have a programmatic issue with your algorithm.
+- Your model is underfitting the testing data.
+
+Q41. You are designing a machine learning model to dynamically translate from a variety of languages to Klingon. What algorithm might be the best approach for this use-case?
+- NTM
+x Seq2Seq
+- LDA
+- AWS Translate
+- BlazingText
+
+Q42. You have been tasked with collecting 100-byte events from hundreds or thousands of low power devices and writing records into a Kinesis stream. You have Amazon Elastic Compute Cloud (EC2) instances serving as a proxy for these events. You must add logic for batching or multithreading, in addition to retry logic and record de aggregation at the consumer side. Which service can you use to handle all of this for you?
+- Using EMR cluster as intermediate logic mechanism
+x Using the Kinesis Producer Library (KPL)
+- Using a combination of SQS and Lambda for retry logic and batching respectively.
+- Using the APIs for Kinesis Streams
+- Using the Amazon Kinesis Agent
+- Using the Kinesis Client Library (KCL)
+
+Q43. You are a machine learning specialist that needs to setup an ETL pipeline for your organization using Amazon Elastic Map Reduce (EMR). You must connect the EMR cluster to Amazon SageMaker without writing any specific code. Which framework allows you to achieve this?
+- Apache Pig
+- Apache Mahout
+- Apache Flink
+- Apache Hive
+x Apache Spark
+
+Q44. You are training a model using a dataset with credit card numbers stored in Amazon S3. What should be done to ensure these credit cards are encrypted before and during model training?
+- When calling the SageMaker SDK training job ensure the SSE-KMS is used as a parameter during the creation of the training job.
+- Create a Lambda function that is invoked when the training job starts to apply SSE-KMS key to the data before starting the training process.
+- Create a SageMaker notebook instance with a SSE-KMS key associated with it. After loading the S3 data onto the notebook instance encrypt is using SSE-KMS before feeding it into the training job.
+x Ensure the S3 bucket and data has a SSE-KMS key associated with it and specify the same SSE-KMS Key ID when you create the SageMaker notebook instance and training job.
+
+Q45. After several weeks of working on a model for genome mapping, you believe you have perfected it and now want to deploy it to a platform that will provide the highest performance. Which of the following AWS platforms will provide the highest performance for this compute-intensive model?
+x EC2 F1 instance
+- EC2 X1 Instance
+- EC2 G3 Instance
+- EC2 M2 Instance
+- EC2 P2 Instance
+
+Q46. You need to ensure that only certain IP addresses can access an S3 bucket used to store sensitive model training data. What type of IAM policy would you use?
+x Resource-based policy
+- Account-based policy
+- Identity-based policy
+- User-based policy
+- Role-based policy
+
+Q47. You are consulting for a large intelligence organization that has very strict rules around how data must be handled. One such rule is that data cannot be allowed to transit the public internet. What might you suggest as they are setting up SageMaker Notebook instances?
+- Route 53 Weighted Routing
+- VPC Log Monitoring
+x VPC Interface Endpoints
+- AWS Macie
+- AWS CloudTrail
+- API Gateway
+
+Q48. After you have been running your SageMaker Linear Learner binary classification model in production for a while, you want to evaluate the confidence statistics of your model. What service will best help you analyze confidence scores of a published model?
+- CloudSentry Events
+- CloudTrail Logs
+- CloudWatch Events
+x CloudWatch Logs
+- CloudTrail Events
+- CloudSentry Logs
+
+Q49. You work for a team that has a model being used in production, for which the data it is sent to perform inferences on is coming from a different source. The model was built to work well for cleaned data inputs. How do you ensure that the model’s performance in production will be similar?
+- Ensure bias is introduced to the data being used in production since it is from another data source.
+- Use Data Pipeline workflows to compare the data source and the data used to train the model.
+x Ensuring that the data is accurate for data inputs and training data.
+- Never allow input data for a production model come from another data source.
+- Create a Lambda function that replaces missing values with the mean value on the data source before it is used in production.
+x Review counts, data durations, and the precision of the data inputs compared to training data.
+
+Q50. You have been given a dataset and are in the stages of analyzing it. This dataset has around 200 features in both numeric and categorical formats. You decide to perform dimensionality reduction on the dataset hoping it will help create a more robust machine learning model. Which of the following techniques would perform better for reducing dimensions of our dataset?
+- Removing columns which have high variance in data
+x Removing columns which have too many missing values
+- Using the cartesian product of different features to create more relevant features
+- Removing columns with dissimilar data trends
+
+Q51. You are reviewing the evaluation metrics associated with a recently trained model. You decide to plot the points associated with the number of epochs (on the x axis) and the log loss (on the y axis) for both training and testing data. You notice as the log loss decreases as the number of epochs increases for both training and testing. You notice the log loss starts to level out around 7 epochs but continues to process over 100 epochs. What should be done to improve training time?
+- Evaluate a new evaluation metric rather than log loss
+- Increase the learning rate
+- Decrease the learning rate
+x Stop training at an earlier epoch
+- Increase the number of epochs
+
+Q52. You are a machine learning specialist working on an on-premise Hadoop cluster with thousands of Apache Parquet files. You have successfully loaded these files into Amazon S3 and now need to run SQL queries on these files. Which solution allows you to do this with the least amount of setup?
+- Data Pipeline and RDS
+x AWS Glue Data Catalog and Athena
+- EMR and Presto
+- Redshift and Redshift Spectrum
+
+Q53. You are consulting for a logistics company who wants to implement a very specific algorithm for warehouse storage optimization. The algorithm is not part of the currently available SageMaker built-in algorithms. What are your options?
+x Build the algorithm in a docker container and use that custom algorithm for training and inference in SageMaker.
+x Search the AWS Marketplace for the algorithm. If it exists, deploy it using SageMaker for inferences.
+- Post an incendiary message to Twitter hoping to shame AWS into adopting the specialized algorithm.
+- Wait until the algorithm is available in SageMaker before further work.
+- Use a series of existing algorithms to simulate the actions of the unavailable algorithm.
+
+Q54. You have been brought in to help a Data Science group within a large manufacturing company migrate their existing ML processes to AWS. They currently use a pre-trained word vector model using fastText for text classification. What would be the most efficient path using as much of the AWS platform as possible?
+- Install the Apache Spark libraries and use the model with SageMaker.
+- Create a Docker container for the fastText algorithm and upload to the ECR.
+- Deploy TensorFlow on EC2 spot instances to use the pre-trained model.
+- Deploy EMR with Mahout to use the fastText model.
+x Use the built-in algorithms provided by SageMaker to host the model.
+
+Q55. You have been asked by a client, a large regional hospital chain, to help streamline the processing of inbound paper documents through automated workflow. Which of the following might be MOST useful?
+- Amazon Medical Services
+x Amazon Textract
+- Amazon Comprehend Medical
+- Amazon Rekognition
+- SageMaker Image Recognition
+- SageMaker Object Detection
+
+Q56. Your company is preparing for a new release of a very key machine learning service that is sold to other organizations on a SaaS basis. Because company reputation is at stake, it is critical that the updates are not used in production until regression testing has shown that the updates perform as good as the existing model. Which validation strategy would you choose?
+- Use an A/B test to expose the updates to real-world traffic.
+x Make use of backtesting with historic data.
+x Use a K-Fold validation method
+- Use a canary deployment to collect data on whether the model is ready for production.
+- Use a rolling upgrade to determine if the model is ready for production.
+- Deploy using a Big Bang method and quickly rollback if customers report errors.
+
+Q57. Your model consists of a linear series of steps using LDA, Random Cut Forest and a scikit-learn step. What is the most efficient way to deploy this model?
+- Use AWS Step Functions to chain the steps together.
+- Use AWS Batch to chain the steps together.
+x Use inference pipelines to chain the steps together.
+- Use Data Pipeline to chain the steps together.
+- Use AWS Glue to chain the transform steps together.
+
+Q58. A machine learning model is being created using Amazon's Factorization Machines algorithm to help make click predictions and item recommendations for new customers. Which of the following would be candidates during the training process?
+x Creating a regression model where the testing dataset is scored using Root Mean Square Error (RMSE).
+- Creating a multi-classification model where the testing dataset is scored using Area Under The Curve (AUC).
+x Creating a binary classification model where the testing dataset is scored using Binary Cross Entropy (Log Loss), Accuracy, and F1 Score.
+- Making inferences to the model in application/csv format.
+- Using sparse data in CSV format as training data.
+x Using sparse data in recordIO-protobuf format with Float32 tensors as training data.
+
+Q59. You are part of a Machine Learning team that has several large CSV datasets in Amazon S3. The team have been using these files to build a model in Amazon SageMaker using the Linear Learner algorithm. The time it takes to train these models is taking hours to complete. The team’s leaders need to accelerate the training process. What can a Machine Learning Specialist do to address this concern?
+- Use Amazon Machine Learning to train the models.
+x Use Amazon SageMaker's Pipe input mode.
+- Use Amazon Kinesis to stream the data into Amazon SageMaker.
+- Create SageMaker Hyperparameter auto tuning job using ml.m5 instance types to find optimized hyperparameter.
+- Use AWS Glue to transform the data from the CSV format into JSON.
+

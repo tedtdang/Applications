@@ -1,0 +1,266 @@
+####Q1. K-means is a supervised learning technique that can be used for classification while K-nearest neighbors is an unsupervised learning technique which returns classes of the samples based solely on similarity between samples
+- [ ] True
+- [x] False
+
+####Q2. Given the same data set, K-means always converges to the same solution, regardless of the starting point
+- [ ] True
+- [x] False
+
+####Q3. Check all the ways of initializing K-means
+- [x] randomly choose samples as the initial centroids
+- [ ] initialize all centroids at the mean of all the samples
+- [x] randomly assign all samples to one of K classes
+- [ ] initialize all centroids at the origin - e.g. (0,0)
+
+####Q4. Although metrics are available to measure the quality of clustering when we know the true classes, there are no metrics to measure the quality of unsupervised clustering when true classes are not known
+- [ ] True
+- [x] False
+
+####Q5. Pick the two data formats for use in clustering
+- [x] a similarity matrix of size 'samples x samples'
+- [ ] a 'features x features' sized correlation matrix
+- [x] a 'samples x features' matrix, standard in machine learning but without a chosen predictor
+
+####Q6. Check the scenario where density-based clustering algorithms like DBSCAN are expected to outperform K-means
+- [ ] When the clusters are well represented by spheres
+- [ ] When we know exactly how many clusters to expect
+- [x] When the clusters would share the same center-point, such as two concentric circles
+
+####Q7. Check all the components of a basic reinforcement learning model
+- [x] A set of states of the environment
+- [x] A set of actions the organism can take
+- [x] rules of transitions between states
+- [x] rules that determine the immediate reward of certain transitions
+- [x] rules that describe what the organism can observe
+
+####Q8. Check all of the following that are associated with "model-free" reinforcement learning as opposed to model-based learning?
+- [x] It is more associated with valuation of repetitive events than new, novel environments (e.g. habit learning)
+- [ ] It takes advantage of direct knowledge of probabilities between states to optimize learning
+- [x] Inferring state and action value functions iteratively based on repeated rewards and punishments
+- [x] This technique uses prediction error as the primary means of updating policy decisions
+
+####Q9. An important aspect in formulating a problem as a Markov process is that the future is conditionally independent of the past giving the current state
+- [x] True
+- [ ] False
+
+####Q10. When you are not sure if your state-action value function is correct, you should always pick the state-action pair of maximum value
+- [ ] True
+- [x] False
+
+####Q11. Reward prediction error is
+- [ ] The total future expected reward minus the total future actual reward (with temporal discounting)
+- [ ] The total future actual reward minus the total future expected reward (with temporal discounting)
+- [ ] The expected reward value - the received reward value
+- [x] The received reward value - the expected reward value
+
+####Q12. In Q learning, you are updating the action value function, but there are two parameters which control the manner in which this updating occurs
+- [ ] Regularization strength (lamda)
+- [x] Temporal discounting (gamma)
+- [ ] Maximum estimation error (epsilon)
+- [x] Learning rate (alpha)
+
+####Q13. What is the best description of what a link between nodes represents in a Bayesian network?
+- [ ] Only between variables that are directly causal, from cause to effect.
+- [x] Linking direct dependences, not necessarily causal.
+- [ ] Any variables that are not independent from each other require a direct link
+
+####Q14. Which is an example of "explaining away"? That is, how a shared child node can indicate a dependency among parent nodes only when observed.
+- [ ] A positive result on a lung X-ray indicates a high probability that someone has lung cancer
+- [ ] When you see someone smoking, you know their odds of having a positive lung X-ray for cancer are higher.
+- [x] Seeing someone with lung cancer is smoking makes you less likely to assume the cancer is from high levels of pollution.
+
+####Q15. Two child nodes of the same parent are independent until the parent node is observed, which then introduces a dependency.
+- [ ] True
+- [x] False
+
+####Q16. Two nodes that share the same child node are independent until the child node is observed, which then introduces a dependency.
+- [x] True
+- [ ] False
+
+####Q17. Assuming none of the variables are observed, in which of the graphs would the value of node A depend upon the value of node C. Multiple possible. Note, node B is NOT observed.
+- [x] A --> B --> C
+- [x] A <-- B <-- C
+- [ ] A --> B <-- C
+- [x] A <-- B --> C
+
+####Q18. Assuming the value of B is observed ("known"), in which of the graphs would the value of node A now depend upon the value of node C.
+- [ ] A --> B --> C
+- [ ] A <-- B <-- C
+- [x] A --> B <-- C
+- [ ] A <-- B --> C
+
+####Q19. Check all components of a fully-specified Bayesian network
+- [x] Notes representing variables
+- [x] Links between the nodes representing dependencies between variables
+- [x] Conditional probability tables (or probability functions if continuous) quantifying the dependencies which the links represent
+- [x] Prior probabilities for root nodes
+
+####Q20. If a potential feature does not necessarily correlate with a target, it should not necessarily be removed because
+- [x] It may still have a dependent relationship with the target
+- [ ] lack of correlation does not imply lack of causation
+- [ ] correlation does not imply causation
+- [ ] the best fitting line in a scatter plot with the feature and target may have a non-zero slope for a line in linear regression
+
+####Q21. In a given binary classification problem, Out of all the positive samples in the test set, the proportion of those which are correctly identified as positive by the classifier is called...
+- [x] Recall
+- [ ] Specificity
+- [ ] F1 Score
+- [ ] Precision
+
+####Q22. In a classification problem using high dimensional data (e.g. greater than 10 features) a PCA dimensionality reduction to two PCA components was performed to visually observe how separable two classes are on a scatter plot with X as PCA component 1 and Y as PCA component 2 for each data point. If the classes are not visibly separate in the 2D plot, what does that mean for a classifier trained on all the features?
+- [x] They may be separable with more features, it is inconclusive
+- [ ] They cannot be distinguished by a classifier
+- [ ] Overlaps in the PCA plot indicate the classes are separable when all features are used
+
+####Q23. The proportion of correctly identified samples from the test samples that were identified as belonging to a particular class by the classifier is called...
+- [ ] Sensitivity
+- [x] Precision
+- [ ] Recall
+- [ ] F1 Score
+
+####Q24. In Gaussian Naive Bayes, select all the parameters that have to be learned from the data to create a predictive model
+- [ ] The mean and standard deviation for each feature, combining all classes together
+- [ ] the prior probability of each feature value's likelihood
+- [x] the proportion of training data in each class
+- [x] The mean and standard deviation for each feature for each class
+
+####Q25. Check which of the following are associated with Bagging instead of Boosting
+- [ ] This is a common strategy to combine multiple learners, even if they are from completely different modeling strategies (e.g. combining logistic regression and naive bayes)
+- [ ] This is more likely to be used for models which are weak learners, like decision stumps - decision trees with only one level.
+- [x] This is more likely to be used for models which have the potential to overfit, like decision trees with no restrictions.
+- [x] Random forest classifiers use this technique
+
+####Q26. Check which of the following are associated with Bagging instead of Boosting
+- [ ] This technique is one of the reasons that some Kaggle competitions don’t allow teams to merge during competitions (e.g. team #2 and #3 join together)
+- [x] All estimators are weighted equally.
+- [x] the features (commonly the columns in a data set) and samples/observations (commonly the rows in a data set) may be resampled. And this can be done with or without replacement.
+
+####Q27. K-fold cross-validation will lead to lower accuracies than expected with the full training set because only (K-1)/K % of the data is being used for training (e.g. 4/5ths for K=5). The way to improve this is by increasing K.But what is a problem with increasing K?
+- [ ] The separated test set is getting small and may bias results of the cross-validation
+- [ ] The number of samples in the data set may not be perfectly divisible by K
+- [x] K models have to be trained which takes more time as K increases
+
+####Q28. It is important to not remove features that are statistically independent of target values because they might be correlated to the target, and thus useful for prediction.
+- [ ] True
+- [x] False
+
+####Q29. Specificity is...
+- [ ] Precision for the negative case
+- [x] Recall for the negative case
+- [ ] Recall for the positive case
+- [ ] Precision for the positive case
+
+####Q30. After determining the best k value for a k nearest neighbors prediction, how might the best fitting k value change if we changed the training set by incorrectly labeling 10% of all examples?
+- [ ] mathematically, the best fitting k value would stay the same regardless of adding noise
+- [x] best k value would on average be higher
+- [ ] best k value would on average be lower
+
+####Q31. Which of the following is not an explicit part of the standard Q-learning equation?
+- [ ] state-action value function
+- [ ] Temporal discounting
+- [ ] Reward prediction error
+- [ ] a learning rate
+- [x] the policy function
+
+####Q32. The Q in Q-learning for reinforcement learning is best described as
+- [ ] The reward signal from the environment
+- [ ] the reward prediction error quotient
+- [ ] The discount factor
+- [x] The sum of future expected rewards
+
+####Q33. Select all scenarios that are examples of supervised learning
+- [ ] An infant, unable to speak, but forming concepts of ‘r’ or ‘l’ sounds based on the grouping of similar sounds over time.
+- [x] Netflix using their database of user ratings to predict how you would rate a movie you haven’t seen
+- [ ] Using the nucleotide sequences on a region of non-coding DNA shared among species to estimate a phylogenetic tree.
+- [x] Predicting a buyer's chance of clicking on an online advertisement based on the previous behavior of similar online shoppers.
+
+####Q34. Select all examples of semi-supervised learning (as opposed to pure supervised or unsupervised learning examples)
+- [ ] Making stock predictions for a high-frequency trading company
+- [ ] Determining a taxonomy (tree-like classification) for animals based solely on their features
+- [x] Collecting constant GPS data, automatically clustering repeated locations, then having a personal label those clusters as “home” or “work” with the goal of having the setup detect whenever the wearer is at home or at work.
+- [x] Your learning of music genres, especially your ability to ask questions about a category of music that you notice as particularly distinct.
+
+####Q35. Choose correct answers
+- [ ] In Ridge Regression, irrelevant feature coefficients will often be set to zero, effectively removing them from the model
+- [x] In Lasso Regression, irrelevant feature coefficients will often be set to zero, effectively removing them from the model
+- [x] In Ridge Regression, irrelevant feature coefficients will be pushed to zero, but likely not completely removed
+- [ ] In Lasso Regression, irrelevant feature coefficients will be pushed to zero, but likely not completely removed
+
+####Q36. Choose correct answers
+- [x] Leave one out cross-validation: Same as K-fold cross-validation where K = the size of the data set
+- [ ] Subject-wise cross-validation: Same as K-fold cross-validation where K = the size of the data set
+- [ ] Leave one out cross-validation: When you use the data from N-1 people to train your classifier, and you test it on the Nth person. Repeat the process by changing who is in the test set appropriately.
+- [x] Subject-wise cross-validation: When you use the data from N-1 people to train your classifier, and you test it on the Nth person. Repeat the process by changing who is in the test set appropriately.
+
+####Q37. When you want to know how well a product will work on a new person without any individual-specific training, it is better to use K-fold cross-validation than subject-wise cross-validation, because K-fold cross-validation may have an individual's data in both the training and test sets, which is what you want in that case.
+- [ ] True
+- [x] False
+
+####Q38. Backpropagation is the ability of deep learning neural networks, like google's Deep Dream, to propagate signals from higher level neurons down to low-level neurons - allowing us in some cases to see the "hallucinated" images.
+- [ ] True
+- [x] False
+
+####Q39. Feature engineering differs from feature selection by the fact that feature engineering uses systematic tools while feature selection is made on an ad-hoc arbitrary basis.
+- [ ] True
+- [x] False
+
+####Q40. Select all the transformations of features that have the potential to improve prediction accuracy for most ML algorithms (note: simple linear combinations don't often help since most models do that automatically)
+- [x] logarithm transformation
+- [ ] differences of features
+- [x] cross products of features
+- [ ] sums of features
+- [x] squares (or cubes...)
+- [ ] absolute value
+
+####Q41. PCA...
+- [ ] is used for visualizing high-dimensional data sets
+- [x] is a type of factor analysis which can reduce the dimensionality of data
+- [ ] stands for Preferred Components Analysis
+- [x] is performed by finding the linear combination of features that explain most of the variance in the data, then removing that feature's impact, and continuing the process. It's a greedy algorithm with earlier features being the more important ones, and later features essentially just noise in most cases
+
+####Q42. A random forest classifier uses boosting on a set of decision trees to increase performance
+- [ ] True
+- [x] False
+
+####Q43. If you are teams #2 and #3 in a competition and you want to merge your teams to beat #1, you will more likely be using bagging rather than boosting to win.
+- [ ] True
+- [x] False
+
+####Q44. Here is an analogy:"Rose" is to "Flower" as "Porsche" is to "Automobile", because the first word is a type of the second word."North" is to "South" as "Black" is to "White" because second word is the opposite of the first word.and so on...The following is analogy can be said for four important concepts in machine learning. Fill in the blank. Classification is to regression in supervised learning as _____________ is to dimensionality reduction in unsupervised learning. Or more succinctly, classification is to regression as ___________________ is to dimensionality reduction
+- [ ] PCA
+- [ ] Factor Analysis
+- [x] Clustering
+- [ ] Reinforcement learning
+
+####Q45. What is the purpose of regularization in linear regression?
+- [x] To diminish the contribution of irrelevant features to the resulting model, effectively performing automated feature selection during learning
+- [x] To decrease the coefficient values for irrelevant terms in the regression model
+- [ ] To lasso the ridge with an elastic net
+- [x] To improve prediction accuracy on a future test set better than ordinary linear regression
+
+####Q46. Accuracy is
+- [ ] The geometric mean of precision and recall
+- [ ] The arithmetic mean of precision and recall
+- [x] the average recall across classes if the number of items in each class is the same
+
+####Q47. When cross-validation is performed in the validation set, the score of the best fitted model hyperparameters in that set is on average lower than the the score of that best fitted model on a separate test set.
+- [ ] True
+- [x] False
+
+####Q48. If 5% of your samples have incorrect labels in your available labelled data, which option is likely best to improve model accuracy?
+- [ ] Get more samples (even if they are 1% in error)
+- [x] Change your hyperparameter to avoid overfitting
+- [ ] Add/remove features
+- [ ] Derive/predict new features from current features in your data set
+
+####Q49. cross-validation will lead to lower accuracies than expected with the full training set because only (K-1)/K % of the data is being used for training (e.g. 4/5ths for K=5). The way to improve this is by increasing K. But what is a problem with increasing K?
+- [ ] The separated test set is getting small and may bias results of the cross-validation
+- [ ] The number of samples in the data set may not be perfectly divisible by K
+- [x] K models have to be trained which takes more time as K increases
+
+####Q50. If I want to test my voice recognition software to see how well it will works on a new person it has not yet been trained for, what type of cross-validation would give me the best sense of accuracy?
+- [ ] K fold cross-validation
+- [ ] Stratified K-fold cross-validation
+- [ ] Leave one out cross-validation
+- [x] Subject-wise cross-validation
+

@@ -1,0 +1,115 @@
+Q76. Which AWS service gives the user the ability to group AWS resources across different AWS regions by application and then collectively view their operational data for monitoring purposes?
+X systems manager
+- resource access manager (AWS RAM)
+- management console
+- resource groups
+
+Q77. Which elastic load balancer type would be best suited to help you host a wEBSite?
+X application
+- network
+- classic
+- web
+
+Q78. You need to re-create an EBS volume that you have used previously. How might you go about doing that?
+- use the copy that lives in the auto scaling group.
+- copy the AMI the volume was based on and spin it up.
+X re-create the volume from a snapshot.
+- use a CloudFormation template to recreate the volume.
+
+Q79. You need to allow resources in a private subnet to access the internet. Which of the following must be present to enable this access?
+- security groups
+- network access control lists
+- route tables
+- nat gateway
+
+Q80. Your manager approaches you this morning to tell you there has been a surprise audit announced by the internal audit team for all of your company’s AWS accounts. Which service would you use to provide the necessary information to the audit team?
+X CloudTrail
+- Inspector
+- QuickSight
+- CloudWatch
+
+Q81. As an it support center team member, you begin receiving calls from users about problems they’re experiencing with your company’s AWS-based point-of-sale system. You want to begin your investigation by checking with AWS for any service alerts they may be communicating. Which AWS tool will you give you the information you seek?
+- AWS Trusted Advisor
+- AWS global status center
+- AWS operations monitor.
+X AWS Personal Health Dashboard
+
+Q82. You visit a clients site and get called into a corridor discussion. You are asked to describe the new (2019) URL structure for objects in S3. Which of these do you use as a description
+- https, then the AWS S3 regional endpoint, then dot, then the bucket name, then slash, then the object name
+- https, then the AWS S3 regional endpoint, then slash, then the bucket name, then slash, then the object name
+- https, then the bucket name, then slash, then the AWS S3 regional endpoint, then slash, then the object name
+- http, then the object name, then dot, then the AWS S3 regional endpoint, then dot, then bucket the name
+X https, then the bucket name, then dot, then the AWS S3 regional endpoint, then slash, then the object name
+- https, then the object name, then slash, then the AWS S3 regional endpoint, then slash, then bucket the name
+- http, then the bucket name, then dot, then the AWS S3 regional endpoint, then slash, then the object name
+
+Q83. A software development team needs to create numerous testing environments each day based on multiple concurrent project activities. Provisioning of these environments needs to happen within minutes to ensure that project deadlines are met. The number of environments needed daily varies depending shifting priorities in business requirements. How can the team best achieve the agility they need for creating the testing environments?
+- leverage AWS auto scaling to expand and contract the testing server pool based on demand
+- invoke AWS lambda functions to run the test scenarios
+- use AWS systems manager automation to provision and de-provision the testing environments
+X have AWS CloudFormation provision the stacks and resources needed for the testing environments
+
+Q84. You need a managed, low-cost relational database for your e-commerce store. Which of the following should you use?
+- Mysql on ec2
+- AWS Elasticache
+X DYNAMODB
+- dynamodb
+
+Q85. Which of the below allow you to make entire buckets (like one hosting an S3 wEBSite) public?
+- bucket control lists
+X bucket policies
+- access policies
+- access control lists
+
+Q86. Which of the following tools provides a view of the performance and availability of your AWS services based on your requirements?
+- AWS Trusted Advisor
+X AWS Personal Health Dashboard
+- AWS systems manager
+- AWS service health dashboard
+
+Q87. Which of the below terms represents a series of edge locations plus information about how you want content managed as part of a cdn?
+- an edge group
+- a load balancer
+X a distribution
+- a circulation
+
+Q88. Which of the following AWS services should you use if you’d like to be notified when you have crossed a billing threshold?
+X CloudWatch
+- Trusted Advisor
+- AWS budget
+- AWS cost allocation
+
+Q89. Which of the following load balancers uses listeners, targets, and target groups?
+X application load blancer
+- classic load balancer
+
+Q90. You have been asked to archive some data into glacier that needs to be encrypted. What is the easiest way to achieve this?
+X send the data to glacier and do nothing more – all data in glacier is encrypted by default
+- once the data is in glacier use the AWS console to encrypt it.
+- glacier is not compatible with encrypted data, so it is the wrong choice for this – use S3 instead
+- encrypt the data locally on your server before sending it to glacier
+
+Q91. Which of the following AWS services gives you a personalized view into the performance and availability of the AWS services underlying your AWS resources, alerting you and providing remediation guidance when AWS is experiencing events that my affect you?
+X AWS Personal Health Dashboard
+- Trusted Advisor
+- cloud trail
+- AWS systems manager
+
+Q92. Which of the following are key components of amazon glacier?
+X vault
+X access policy
+- able
+- bucket
+X archive
+- volume
+
+Q93. True or false: to complete the process of creating a multi-az DYNAMODB instance, you must copy the primary instance to a public subnet in a second availability zone
+X false
+- rue
+
+Q94. Your project manager (pm) tasked you with launching an instance for a web application to be developed for an ngo. The pm is especially interested in using an AWS service that provides predicable monthly pricing, and he expects the instance to have the ability to burst above the baseline level of cpu performance when needed. What AWS service should you use to launch this instance?
+- elasticsearch service
+X lightsail
+- c2
+- cloudfront
+
