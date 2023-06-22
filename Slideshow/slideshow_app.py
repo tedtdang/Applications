@@ -21,7 +21,7 @@ with st.sidebar:
         current_image_index = image_index-1
 
     # Add checkbox to toggle slideshow
-    slideshow_enabled = st.checkbox('Enable slideshow', value=True)
+    slideshow_enabled = st.checkbox('Toggle slideshow', value=True)
 
 # Create main screen for displaying images
 main_screen = st.empty()
