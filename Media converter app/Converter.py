@@ -18,8 +18,8 @@ class Media:
     """
 
     @typechecked
-    def __init__(self, directory: str):
-        self.directory = directory
+    def __init__(self, input_path: str):
+        self.directory = f'{p.cwd()}/{input_path}'
 
     # @typechecked
     # @staticmethod
@@ -55,36 +55,25 @@ class Media:
         total_secs = struct_time.tm_sec + struct_time.tm_min * 60 + struct_time.tm_hour * 3600
         return total_secs
 
-    def convert_to_audio(input_path: str, output_path: str, output_ext: str) -> None:
+    @typechecked
+    def convert_to_audio(self, output_ext: str) -> None:
         """Convert a video or audio file to an audio file with a specified extension
 
         Parameters
         ----------
-        input_path : str
-            The path to the input file
-        output_path : str
-            The path to the output file
         output_ext : str
             The extension for the output file, including the dot (e.g. ".mp3")
         """
-        video_extensions = ('.mp4', '.avi', '.mov', '.mpeg', '.mpg', '.m4v', '.wmv', '.flv', '.3gp', '.webm', '.mkv')
-        # create a clip object from the input file
-        clip = VideoFileClip(input_path) if input_path.endswith(video_extensions) else AudioFileClip(input_path)
-
-        # extract the audio from the clip
-        audio = clip.audio
+        # create an AudioSegment object from the input file
+        audio = AudioSegment.from_file(self.directory)
 
         # write the audio to the output file with the specified extension
-        audio.write_audiofile(output_path, codec='libmp3lame', bitrate='192k', fps=clip.fps,
-                              ffmpeg_params=["-map_metadata", "-1"])
+        new_path = p(self.directory).with_suffix("").with_suffix(output_ext)
+        audio.export(new_path, format=output_ext[1:], bitrate="128k")
 
-        # close the clip and audio objects
-        clip.close()
-        audio.close()
+        # update the directory attribute to the new file name
+        self.directory = str(new_path)
 
-        # rename the output file to the specified extension
-        output_path = output_path.rsplit('.', 1)[0] + output_ext
-        os.rename(output_path, output_path.rsplit('.', 1)[0] + output_ext)
 
     # def trim_audio_file(self, dir_path: str = "Media", times_to_cut="times to cut.csv") -> None:
     #     """Trims one video file into multiple ones
